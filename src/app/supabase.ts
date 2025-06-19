@@ -1,33 +1,20 @@
 import { createClient } from '@supabase/supabase-js';
 import { Injectable } from '@angular/core';
 import { Database } from './database.types';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Supabase {
-  constructor() {
-    const supabaseUrl = process.env['SUPABASE_DATABASE_URL'];
-    const supabaseAnonKey = process.env['SUPABASE_ANON_KEY'];
+  #supabase = createClient<Database>(
+    environment.supabase.databaseUrl,
+    environment.supabase.anonKey
+  );
 
-    if (!supabaseUrl || !supabaseAnonKey) {
-      throw new Error('Missing Supabase environment variables.');
-    }
+  async getTests() {
+    const { data } = await this.#supabase.from('test').select('*');
 
-    const supabase = createClient<Database>(
-      supabaseUrl,
-      supabaseAnonKey
-    );
-
-    supabase
-      .from('test')
-      .select('*')
-      .then((response) => {
-        if (response.error) {
-          console.error('Error fetching data:', response.error);
-        } else {
-          console.log('Data fetched successfully:', response.data);
-        }
-      });
+    return data
   }
 }
