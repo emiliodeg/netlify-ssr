@@ -11,7 +11,7 @@ import helmet from 'helmet';
 import { join } from 'node:path';
 import apiRoutes from './api/api';
 import { toNodeHandler } from "better-auth/node";
-import { auth } from './api/config/auth';
+import { auth } from './api/lib/auth';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -24,13 +24,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors());
 
-
-
+/**
+ * better-auth routes
+ */
 app.all('/api/auth/{*any}', toNodeHandler(auth));
+
 /**
  * API routes
- * This is where you define your API endpoints.
- * The API routes are prefixed with `/api` and can be accessed at `/api
  */
 app.use('/api', apiRoutes);
 

@@ -1,8 +1,8 @@
 import { Request, Response, Router } from "express";
-import postRoute from "./posts/posts.routes";
+import todosRoute from "./features/todos/todos.routes";
 
 const router = Router();
-router.use("/posts", postRoute);
+router.use("/todos", todosRoute);
 
 /**
  * Health check route
