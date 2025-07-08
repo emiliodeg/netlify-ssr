@@ -10,6 +10,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import { join } from 'node:path';
 import apiRoutes from './api/api';
+import { toNodeHandler } from "better-auth/node";
+import { auth } from './api/config/auth';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -22,6 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors());
 
+
+
+app.all('/api/auth/{*any}', toNodeHandler(auth));
 /**
  * API routes
  * This is where you define your API endpoints.
