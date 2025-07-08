@@ -1,6 +1,45 @@
 {
   "name": "ngxpress",
   "version": "0.0.0",
+  "description": "The ultimate full-stack Angular starter kit: Angular 20, SSR, Zoneless, Express 5, Prisma, better-auth, and Tailwind CSS 4. Build scalable, production-ready apps with zero boilerplate.",
+  "keywords": [
+    "angular",
+    "angular-starter",
+    "angular-fullstack",
+    "angular-ssr",
+    "angular-express",
+    "angular-prisma",
+    "angular-tailwind",
+    "fullstack",
+    "ssr",
+    "express",
+    "prisma",
+    "tailwindcss",
+    "authentication",
+    "better-auth",
+    "typescript",
+    "nodejs",
+    "monorepo",
+    "modern-web",
+    "scalable",
+    "production-ready",
+    "nextjs-alternative",
+    "zoneless"
+  ],
+  "author": "Mohammad Javed (https://x.com/immohammadjaved)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angularcafe/ngxpress.git"
+  },
+  "homepage": "https://github.com/angularcafe/ngxpress#readme",
+  "bugs": {
+    "url": "https://github.com/angularcafe/ngxpress/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
