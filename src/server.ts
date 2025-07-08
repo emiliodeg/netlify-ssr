@@ -5,24 +5,28 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 import { join } from 'node:path';
+import apiRoutes from './api/api';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
+app.use(cors());
+
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * API routes
+ * This is where you define your API endpoints.
+ * The API routes are prefixed with `/api` and can be accessed at `/api
  */
+app.use('/api', apiRoutes);
 
 /**
  * Serve static files from /browser
