@@ -61,15 +61,41 @@ Whether you’re building a prototype or a production app, ngXpress gives you th
 
 ## 🚀 Quick Start
 
-```bash
-git clone https://github.com/angularcafe/ngXpress.git
-cd ngxpress
-npm install
-npx prisma migrate dev --name init
-npm run start
-# or for SSR
-npm run serve:ssr:ngxpress
-```
+1. **Create your project from this template**
+   - Click the green “Use this template” button on GitHub
+   - Choose your repo name and create your new project
+
+2. **Clone your new repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   cd YOUR_REPO_NAME
+   ```
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Set up the database**
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+
+5. **Start the development server**
+   ```bash
+   npm run start
+   # or for SSR
+   npm run serve:ssr:ngxpress
+   ```
+
+6. **Open your app**
+   - Visit [http://localhost:4200](http://localhost:4200) in your browser
+
+---
+
+**Tip:**  
+- Update the repo URL in step 2 to use your new repo name.  
+- This repo is a template. Click ‘Use this template’ to start your own project instantly!
 
 ---
 
