@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadChildren: () => import('./auth/auth.routes').then(m => m.routes)
     },
     {
+        path: 'todos',
+        loadComponent: () => import('./todos/todos').then(m => m.Todos)
+    },
+    {
         path: '**',
         redirectTo: ''
     }

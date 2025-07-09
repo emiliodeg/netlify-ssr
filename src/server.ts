@@ -18,16 +18,18 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+/**
+ * better-auth routes
+ */
+app.all('/api/auth/{*any}', toNodeHandler(auth));
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors());
 
-/**
- * better-auth routes
- */
-app.all('/api/auth/{*any}', toNodeHandler(auth));
+
 
 /**
  * API routes

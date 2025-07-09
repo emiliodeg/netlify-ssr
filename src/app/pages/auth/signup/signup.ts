@@ -1,6 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,6 +10,8 @@ import { RouterLink } from '@angular/router';
   templateUrl: './signup.html'
 })
 export class Signup {
+  private authService = inject(AuthService);
+  private router = inject(Router);
   form: FormGroup;
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
@@ -26,11 +30,15 @@ export class Signup {
     if (this.form.invalid) return;
     this.loading.set(true);
     this.error.set(null);
-    // TODO: Connect to API
-    setTimeout(() => {
-      this.loading.set(false);
-      // Simulate error for demo
-      // this.error.set('Email already in use');
-    }, 1200);
+    this.authService.signUp(this.form.getRawValue()).subscribe({
+      next: () => {
+        this.loading.set(false);
+        this.router.navigate(['/todos']);
+      },
+      error: (err) => {
+        this.loading.set(false);
+        this.error.set(err?.error?.message || 'An error occurred during sign-up');
+      }
+    });
   }
 }

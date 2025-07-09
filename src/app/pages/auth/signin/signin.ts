@@ -1,6 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -8,11 +10,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: './signin.html'
 })
 export class Signin {
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   form: FormGroup;
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
-
-  private fb = inject(FormBuilder);
 
   constructor() {
     this.form = this.fb.group({
@@ -25,11 +29,15 @@ export class Signin {
     if (this.form.invalid) return;
     this.loading.set(true);
     this.error.set(null);
-    // TODO: Connect to API
-    setTimeout(() => {
-      this.loading.set(false);
-      // Simulate error for demo
-      // this.error.set('Invalid credentials');
-    }, 1200);
+    this.authService.signIn(this.form.getRawValue()).subscribe({
+      next: () => {
+        this.loading.set(false);
+        this.router.navigate(['/todos']);
+      },
+      error: (err) => {
+        this.loading.set(false);
+        this.error.set(err.message || 'An error occurred during sign-in');
+      }
+    });
   }
 }
