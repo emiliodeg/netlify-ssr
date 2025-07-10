@@ -32,7 +32,8 @@ export class Signin {
     this.authService.signIn(this.form.getRawValue()).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigate(['/todos']);
+        const returnUrl = this.router.getCurrentNavigation()?.extras?.queryParams?.['returnUrl'] || '/dashboard';
+        this.router.navigateByUrl(returnUrl);
       },
       error: (err) => {
         this.loading.set(false);

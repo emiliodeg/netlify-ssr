@@ -1,6 +1,9 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Api } from '../core/api';
-import { ISignin, ISignup } from '../models/auth.model';
+import { ISignin, ISignup, User } from '../models/auth.model';
+import { Router } from '@angular/router';
+import { catchError, defer, of, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +11,20 @@ import { ISignin, ISignup } from '../models/auth.model';
 export class AuthService {
 
   private api = inject(Api);
+  private router = inject(Router);
+  private http = inject(HttpClient); // Using the HttpClient from Api service
+
+  // Reactive signal for user session
+  user = signal<User | null>(null);
+
+  /**
+   * To check if the user is signed in.
+   * This will return the user details if the user is logged in.
+   * @returns 
+   */
+  isSignedIn() {
+    return this.user() !== null;
+  }
 
   /**
    * To sign in a user using email and password.
@@ -32,8 +49,16 @@ export class AuthService {
    * This will return the user details if the user is logged in.
    * @returns 
    */
-  getSession() {
-    return this.api.get('auth/session');
+  getSession(): any {
+    return defer(() =>
+      this.api.get<User>('auth/get-session').pipe(
+        tap((user) => this.user.set(user)),
+        catchError(() => {
+          this.user.set(null);
+          return of(null);
+        })
+      )
+    );
   }
 
   /**
@@ -41,6 +66,9 @@ export class AuthService {
    * @returns 
    */
   signOut() {
-    return this.api.post('auth/sign-out', {});
+    this.api.post('auth/sign-out', {}).subscribe(() => {
+      this.user.set(null);
+      this.router.navigate(['auth/signin']);
+    });;
   }
 }
