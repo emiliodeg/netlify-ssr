@@ -13,12 +13,6 @@ export class AdminSidebarComponent {
   authService = inject(AuthService);
   user = this.authService.user;
 
-  value = signal('Hello, Admin!');
-
-  ngOnInit() {
-    console.log('component in it', this.user());
-  }
-
   signOut() {
     this.authService.signOut();
   }
