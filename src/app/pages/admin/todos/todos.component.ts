@@ -1,6 +1,6 @@
-import { Component, inject, signal, computed, effect } from '@angular/core';
-import { TodosService, Todo } from '../../../services/todos.service';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Todo, TodosService } from '@services/todos.service';
 
 @Component({
   selector: 'app-todos',

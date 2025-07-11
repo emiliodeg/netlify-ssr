@@ -1,8 +1,8 @@
 import { CanMatchFn, Router } from '@angular/router';
 import { inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
 import { map } from 'rxjs';
+import { AuthService } from '@services/auth.service';
 
 export const adminGuard: CanMatchFn = (route, segments) => {
   const authService = inject(AuthService);

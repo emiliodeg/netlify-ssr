@@ -1,8 +1,8 @@
 import { inject, PLATFORM_ID } from '@angular/core';
 import { CanMatchFn, Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { isPlatformBrowser } from '@angular/common';
 import { map } from 'rxjs';
+import { AuthService } from '@services/auth.service';
 
 /**
  * Prevents access to /auth routes if the user is already signed in.

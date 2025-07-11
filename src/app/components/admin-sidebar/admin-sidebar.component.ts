@@ -1,12 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { signal } from '@angular/core';
-import { JsonPipe } from '@angular/common';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-admin-sidebar',
-  imports: [RouterLink, JsonPipe],
+  imports: [RouterLink],
   templateUrl: './admin-sidebar.component.html'
 })
 export class AdminSidebarComponent {

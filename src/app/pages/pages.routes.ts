@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { guestGuard } from '../core/guards/guest.guard';
-import { adminGuard } from '../core/guards/admin.guard';
-import { AdminLayoutComponent } from '../layouts/admin-layout/admin-layout.component';
-import { MainLayoutComponent } from '../layouts/main-layout/main-layout.component';
+import { adminGuard } from '@core/guards/admin.guard';
+import { guestGuard } from '@core/guards/guest.guard';
+import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
+import { MainLayoutComponent } from '@layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
     {

@@ -3,6 +3,27 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": [
+        "app/components/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@layouts/*": [
+        "app/layouts/*"
+      ],
+      "@models/*": [
+        "app/models/*"
+      ],
+      "@pages/*": [
+        "app/pages/*"
+      ],
+      "@services/*": [
+        "app/services/*"
+      ],
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

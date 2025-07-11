@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { IAuthResponse, IUser } from '../models/auth.model';
 import { Router } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
-import { ApiService } from '../core/services/api.service';
+import { ApiService } from '@core/services/api.service';
 
 @Injectable({
   providedIn: 'root'
