@@ -18,22 +18,26 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * better-auth routes
- */
+
+app.use(cors());
+if (process.env?.['NODE_ENV'] === 'development') {
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
+} else {
+  app.use(helmet());
+}
+
+// Register better-auth route BEFORE body parsers and helmet
 app.all('/api/auth/{*any}', toNodeHandler(auth));
 
-// Middlewares
+// Add body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(helmet());
-app.use(cors());
 
-
-
-/**
- * API routes
- */
+// Register API routes
 app.use('/api', apiRoutes);
 
 /**

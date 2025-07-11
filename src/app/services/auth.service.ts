@@ -1,9 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Api } from '../core/api';
-import { ISignin, ISignup, User } from '../models/auth.model';
+import { IUser } from '../models/auth.model';
 import { Router } from '@angular/router';
-import { catchError, defer, of, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { catchError, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +11,9 @@ export class AuthService {
 
   private api = inject(Api);
   private router = inject(Router);
-  private http = inject(HttpClient); // Using the HttpClient from Api service
 
   // Reactive signal for user session
-  user = signal<User | null>(null);
+  user = signal<IUser | null>(null);
 
   /**
    * To check if the user is signed in.
@@ -31,7 +29,7 @@ export class AuthService {
    * @param body 
    * @returns 
    */
-  signIn(body: ISignin) {
+  signIn(body: IUser) {
     return this.api.post('auth/sign-in/email', body);
   }
 
@@ -40,7 +38,7 @@ export class AuthService {
    * @param body 
    * @returns 
    */
-  signUp(body: ISignup) {
+  signUp(body: IUser) {
     return this.api.post('auth/sign-up/email', body);
   }
 
@@ -50,15 +48,15 @@ export class AuthService {
    * @returns 
    */
   getSession(): any {
-    return defer(() =>
-      this.api.get<User>('auth/get-session').pipe(
-        tap((user) => this.user.set(user)),
-        catchError(() => {
-          this.user.set(null);
-          return of(null);
-        })
-      )
-    );
+    return this.api.get<IUser>('auth/get-session').pipe(
+      tap((user) => {
+        this.user.set(user)
+      }),
+      catchError(() => {
+        this.user.set(null);
+        return of(null);
+      })
+    )
   }
 
   /**
@@ -69,6 +67,6 @@ export class AuthService {
     this.api.post('auth/sign-out', {}).subscribe(() => {
       this.user.set(null);
       this.router.navigate(['auth/signin']);
-    });;
+    });
   }
 }

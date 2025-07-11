@@ -12,8 +12,7 @@ export class Api {
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${yourToken}` // optionally
+      'Content-Type': 'application/json'
     });
   }
 
