@@ -1,0 +1,30 @@
+<header class="bg-white py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center gap-3">
+            <!-- <img src="/assets/logo.svg" alt="ngXpress Logo" class="h-8 w-8" /> -->
+            <span routerLink="/"
+                class="text-2xl font-bold text-gray-900 tracking-tight bg-gradient-to-r from-pink-700 via-pink-500 to-purple-500 bg-clip-text text-transparent">ngXpress</span>
+        </div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="#features" class="text-gray-700 font-normal hover:text-primary transition">Features</a>
+            <a href="#pricing" class="text-gray-700 font-normal hover:text-primary transition">Pricing</a>
+            <a href="#testimonials" class="text-gray-700 font-normal hover:text-primary transition">Testimonials</a>
+            <a href="#faq" class="text-gray-700 font-normal hover:text-primary transition">FAQ</a>
+            <a routerLink="/admin" class="text-gray-700 font-normal hover:text-primary transition">Admin</a>
+        </nav>
+        <div class="flex gap-2 items-center ml-6">
+            <a routerLink="auth/signin"
+                class="px-6 py-2 rounded-md border border-primary text-primary font-medium bg-white hover:bg-gray-50 transition">Sign
+                In</a>
+            <a routerLink="auth/signup"
+                class="px-6 py-2 rounded-md bg-primary text-white font-medium shadow hover:bg-primary/90 transition">Sign
+                Up</a>
+        </div>
+        <button class="md:hidden text-gray-700 focus:outline-none ml-4" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="h-7 w-7">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+</header>

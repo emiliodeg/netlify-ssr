@@ -1,15 +1,15 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Api } from '../core/api';
 import { IUser } from '../models/auth.model';
 import { Router } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
+import { ApiService } from '../core/services/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private api = inject(Api);
+  private apiService = inject(ApiService);
   private router = inject(Router);
 
   // Reactive signal for user session
@@ -30,7 +30,7 @@ export class AuthService {
    * @returns 
    */
   signIn(body: IUser) {
-    return this.api.post('auth/sign-in/email', body);
+    return this.apiService.post('auth/sign-in/email', body);
   }
 
   /**
@@ -39,7 +39,7 @@ export class AuthService {
    * @returns 
    */
   signUp(body: IUser) {
-    return this.api.post('auth/sign-up/email', body);
+    return this.apiService.post('auth/sign-up/email', body);
   }
 
   /**
@@ -48,7 +48,7 @@ export class AuthService {
    * @returns 
    */
   getSession(): any {
-    return this.api.get<IUser>('auth/get-session').pipe(
+    return this.apiService.get<IUser>('auth/get-session').pipe(
       tap((user) => {
         this.user.set(user)
       }),
@@ -64,7 +64,7 @@ export class AuthService {
    * @returns 
    */
   signOut() {
-    this.api.post('auth/sign-out', {}).subscribe(() => {
+    this.apiService.post('auth/sign-out', {}).subscribe(() => {
       this.user.set(null);
       this.router.navigate(['auth/signin']);
     });
