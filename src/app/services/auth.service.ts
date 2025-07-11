@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { IUser } from '../models/auth.model';
+import { IAuthResponse, IUser } from '../models/auth.model';
 import { Router } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
 import { ApiService } from '../core/services/api.service';
@@ -13,7 +13,7 @@ export class AuthService {
   private router = inject(Router);
 
   // Reactive signal for user session
-  user = signal<IUser | null>(null);
+  user = signal<IAuthResponse | null>(null);
 
   /**
    * To check if the user is signed in.
@@ -48,7 +48,7 @@ export class AuthService {
    * @returns 
    */
   getSession(): any {
-    return this.apiService.get<IUser>('auth/get-session').pipe(
+    return this.apiService.get<IAuthResponse>('auth/get-session').pipe(
       tap((user) => {
         this.user.set(user)
       }),

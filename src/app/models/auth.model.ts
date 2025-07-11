@@ -1,7 +1,10 @@
 export interface IUser {
-    id?: string;
     email?: string;
     name?: string;
-    role?: string;
-    password?: string;
+    image?: string;
+}
+
+export interface IAuthResponse {
+    user?: IUser;
+    session?: any;
 }

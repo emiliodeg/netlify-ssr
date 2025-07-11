@@ -9,13 +9,8 @@ export const adminGuard: CanMatchFn = (route, segments) => {
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
-
-
   if (isPlatformBrowser(platformId)) {
-    // Build the full path from segments
-    // const returnUrl = '/';
     const returnUrl = '/' + segments.map(s => s.path).join('/');
-    console.log('Attempted URL:', returnUrl);
     if (authService.isSignedIn()) {
       return true;
     }
