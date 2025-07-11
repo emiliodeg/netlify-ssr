@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-admin-layout',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html'
+  templateUrl: './admin-layout.component.html'
 })
-export class AppComponent {
+export class AdminLayoutComponent {
 
 }
