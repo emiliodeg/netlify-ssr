@@ -1,7 +1,8 @@
-import { Component, signal, EventEmitter, Output } from '@angular/core';
+import { Component, signal, EventEmitter, Output, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '@core/services/auth.service';
 
 interface Notification {
   id: number;
@@ -17,6 +18,7 @@ interface Notification {
   templateUrl: './admin-header.component.html'
 })
 export class AdminHeaderComponent {
+  private authService = inject(AuthService);
   @Output() mobileMenuToggle = new EventEmitter<void>();
 
   // Signals for reactive state
@@ -24,7 +26,7 @@ export class AdminHeaderComponent {
   showNotifications = signal(false);
   showUserMenu = signal(false);
   notificationCount = signal(3);
-  
+
   // Mock notifications data
   notifications = signal<Notification[]>([
     {
@@ -50,7 +52,7 @@ export class AdminHeaderComponent {
     }
   ]);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   // Get current page name for breadcrumbs
   currentPage(): string {
@@ -108,7 +110,7 @@ export class AdminHeaderComponent {
   signOut(): void {
     // TODO: Implement sign out logic
     console.log('Sign out');
-    this.router.navigate(['/']);
+    this.authService.signOut();
   }
 
   // Mock user data (replace with actual user service)
