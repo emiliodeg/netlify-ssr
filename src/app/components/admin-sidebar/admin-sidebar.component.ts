@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -8,10 +7,24 @@ import { AuthService } from '@core/services/auth.service';
   templateUrl: './admin-sidebar.component.html'
 })
 export class AdminSidebarComponent {
-  authService = inject(AuthService);
-  user = this.authService.user;
+  @Output() mobileMenuClose = new EventEmitter<void>();
 
-  signOut() {
-    this.authService.signOut();
+  // Create backup functionality
+  createBackup(): void {
+    // TODO: Implement backup creation
+    console.log('Creating backup...');
+    // Show success message or handle backup creation
+  }
+
+  // Clear cache functionality
+  clearCache(): void {
+    // TODO: Implement cache clearing
+    console.log('Clearing cache...');
+    // Show success message or handle cache clearing
+  }
+
+  // Close mobile menu
+  closeMobileMenu(): void {
+    this.mobileMenuClose.emit();
   }
 }
