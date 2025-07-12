@@ -1,5 +1,10 @@
 # ngXpress: The Full-Stack Angular Starter Kit (SSR, Zoneless, Express 5, Prisma, better-auth, Tailwind CSS 4)
 
+> **🚧 Development Notice**  
+> This template/starter kit is currently **under active development** with major changes and improvements coming. We will launch **officially next week** with enhanced features, better documentation, and production-ready examples.  
+>   
+> **⭐ Star this repository** to get notified when we launch and receive updates about new features and improvements!
+
 [![Version](https://img.shields.io/github/package-json/v/angularcafe/ngxpress)](./package.json)
 [![Angular](https://img.shields.io/badge/Angular-20-red.svg)](https://angular.dev/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.1+-green.svg)](https://expressjs.com/)
