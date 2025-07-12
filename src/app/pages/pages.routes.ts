@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { adminGuard } from '@core/guards/admin.guard';
 import { guestGuard } from '@core/guards/guest.guard';
 import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from '@layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from '@layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
@@ -14,7 +15,7 @@ export const routes: Routes = [
     },
     {
         path: 'auth',
-        component: MainLayoutComponent,
+        component: AuthLayoutComponent,
         canMatch: [guestGuard],
         loadChildren: () => import('./auth/auth.routes').then(m => m.routes)
     },
