@@ -20,15 +20,15 @@ const angularApp = new AngularNodeAppEngine();
 
 
 app.use(cors());
-if (process.env?.['NODE_ENV'] === 'development') {
-  app.use(
-    helmet({
-      contentSecurityPolicy: false,
-    })
-  );
-} else {
-  app.use(helmet());
-}
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrcAttr: ["'self'", "'unsafe-inline'"]
+    },
+  })
+);
 
 // Register better-auth route BEFORE body parsers and helmet
 app.all('/api/auth/{*any}', toNodeHandler(auth));
@@ -82,3 +82,4 @@ if (isMainModule(import.meta.url)) {
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
 export const reqHandler = createNodeRequestHandler(app);
+export default app;
