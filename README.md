@@ -1,6 +1,6 @@
-# ngXpress: The Full-Stack Angular Starter Kit (SSR, Zoneless, Express 5, Prisma, better-auth, Tailwind CSS 4)
+# ngXpress: Full-Stack Angular 20+ Starter Kit with Server-Side Rendering (SSR), Express 5, Prisma ORM, Tailwind CSS 4, and Better Auth Integration
 
-[![ngXpress](https://img.shields.io/github/package-json/v/angularcafe/ngxpress)](./package.json)
+[![ngXpress](https://img.shields.io/github/package-json/v/angularcafe/ngxpress?label=ngXpress)](./package.json)
 [![Angular](https://img.shields.io/badge/Angular-20-red.svg)](https://angular.dev/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.1+-green.svg)](https://expressjs.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
@@ -14,274 +14,202 @@
 
 Created and maintained by [@immohammadjaved](https://x.com/immohammadjaved)
 
-Think of ngXpress as the Next.js equivalent for Angular — but without the bloat, plugins, or learning curve. Just Angular + Express, the way it should be. ngXpress is a modern Angular 20 + Express 5 starter with SSR, zoneless execution, Prisma ORM, better-auth for authentication, and Tailwind CSS for styling. Build scalable, maintainable full-stack apps with zero boilerplate.
+Think of **ngXpress** as bringing the best of the Next.js experience to Angular—without the bloat or learning curve. ngXpress is a modern, full-stack Angular 20 + Express 5 starter kit featuring out-of-the-box server-side rendering (SSR), zoneless execution, Prisma ORM, secure authentication with better-auth, and Tailwind CSS for responsive UIs. Build scalable, production-ready web applications with zero boilerplate and a feature-first, modular backend structure—perfect for both prototypes and production apps.
 
-<p align="center">
-  <img src="./social-preview.png" alt="ngXpress" width="900"/>
-</p>
-<p align="center"><i>ngXpress: Modern Angular + Express full-stack starter in action</i></p>
+## 🚀 Live Demo
 
----
+Check out a live example of ngXpress in action:
 
-## 🚀 What is ngXpress?
-
-ngXpress is a full-stack Angular starter kit designed to give you a seamless, modern development experience. It brings together the best of Angular 20, Express 5, zoneless execution, Prisma ORM, better-auth for authentication, and Tailwind CSS for styling—all in one place. 
-
-With ngXpress, you get:
-- A feature-first, modular backend structure for rapid API development
-- Out-of-the-box SSR for SEO and performance
-- A zoneless Angular setup for maximum speed and simplicity
-- Built-in authentication and beautiful, responsive UI with Tailwind CSS
-- A codebase that’s easy to extend, maintain, and deploy
-
-Whether you’re building a prototype or a production app, ngXpress gives you the tools and patterns you need—without the overhead or complexity of other frameworks.
+[View Live Demo](http://demo.ngxpress.dev)
 
 ---
 
-## ✨ Features
+## ✨ Features & Tech Stack
 
-- **Angular 20** with SSR, signals, and standalone components
-- **Express 5** REST API, modular by feature
-- **Prisma ORM** (SQLite by default, easy to switch)
-- **Zoneless**: No zone.js required — enjoy modern, high-performance Angular
-- **Authentication-ready** with **better-auth**
-- **Tailwind CSS** for modern, responsive UI
-- **TypeScript everywhere**
-- **Global error handling**
-- **Feature-first folder structure**
-- **Ready for deployment**
-
----
-
-## 🛠️ Tech Stack
-
-**Frontend:** Angular 20 (zoneless), TypeScript, **Tailwind CSS**  
-**Backend:** Express 5, Prisma ORM, Node.js, **better-auth**  
-**Dev Tools:** Angular CLI, ESLint, Prettier
+- **Angular 20+**: Leverage the latest Angular with signals, standalone components, and new control flow for modern, reactive UIs
+- **Server-Side Rendering (SSR)**: Out-of-the-box SSR for SEO, performance, and fast initial loads
+- **Express 5 Backend**: Modular, feature-first REST API architecture for rapid backend development
+- **Prisma ORM**: Type-safe database access (SQLite by default, easily switchable to PostgreSQL, MySQL, etc.)
+- **Zoneless Execution**: No zone.js overhead—enjoy maximum speed and simplicity
+- **Better Auth Integration**: Secure, production-ready authentication out of the box
+- **Tailwind CSS 4**: Build beautiful, responsive UIs with utility-first CSS
+- **TypeScript Everywhere**: Strict typing for both frontend and backend
+- **NgOptimizedImage**: Performant image handling for Angular apps
+- **Global Error Handling**: Robust error management for APIs and UI
+- **Ready for Deployment**: Optimized for Vercel, Netlify, and traditional servers
+- **Easy to Extend & Maintain**: Clean, scalable codebase and feature-first folder structure
+- **Dev & Tooling**: Angular CLI, ESLint & Prettier, Vite (optional), VS Code recommended settings, Node.js 20+
 
 ---
 
-## 🚀 Quick Start
+## ⚡ Quick Start Guide
 
-1. **Create your project from this template**
-   - Click the green “Use this template” button on GitHub
-   - Choose your repo name and create your new project
+Get started with your own ngXpress project in minutes:
 
-2. **Clone your new repository**
+1. **Create Your Project from the Template**
+   - Click the **“Use this template”** button on the [ngXpress GitHub repository](https://github.com/angularcafe/ngxpress) to generate a new repository under your GitHub account.
+
+2. **Clone Your New Repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   cd YOUR_REPO_NAME
+   git clone https://github.com/<your-username>/<your-repo-name>.git
+   cd <your-repo-name>
    ```
 
-3. **Install dependencies**
+3. **Install Dependencies**
    ```bash
    npm install
    ```
 
-4. **Set up the database**
+4. **Set Up the Database (Prisma + SQLite by default)**
    ```bash
-   npx prisma migrate dev --name init
+   npx prisma generate
+   npx prisma db push
    ```
 
-5. **Start the development server**
+5. **Start the Development Server (Angular + Express SSR)**
    ```bash
    npm run dev
    ```
 
-6. **Open your app**
-   - Visit [http://localhost:4200](http://localhost:4200) in your browser
-   - API endpoints are available at [http://localhost:4200/api](http://localhost:4200/api)
+6. **Open Your Browser**
+   - Visit [http://localhost:4200](http://localhost:4200)
+
+**Additional Tips:**
+- To open Prisma Studio (DB GUI):  
+  `npx prisma studio`
+- To build for production:  
+  `npm run build`
+- To start the production server:  
+  `npm run start`
+- Configure environment variables in the `.env` file as needed.
 
 ---
 
-**Tip:**  
-- Update the repo URL in step 2 to use your new repo name.  
-- This repo is a template. Click 'Use this template' to start your own project instantly!
-- The API is served from the same port as your Angular app, making development seamless.
+## 📦 What’s Included
+
+- **Beautiful SaaS Landing Page:** Modern, responsive, and ready to customize
+- **Authentication Screens:** Sign In, Sign Up, Forgot/Reset Password (secure, production-ready)
+- **Admin Dashboard:** Modular, extendable admin interface
+- **Todos CRUD Example:** End-to-end CRUD with Angular, Express, and Prisma
 
 ---
 
-## 🏗️ File Structure
+## 📂 File Structure
 
-### Frontend (Angular)
-```
-src/app/
-  pages/         # Route-based pages (admin, not-found, home, auth)
-  components/    # Reusable UI components (admin-sidebar, admin-header, footer, header, pricing, hero, features, faq)
-  services/      # Feature services (todos.service.ts)
-  models/        # TypeScript interfaces and models (auth.model.ts)
-  core/
-    guards/      # Route guards (guest.guard.ts, admin.guard.ts)
-    services/    # Core services (api.service.ts)
-  layouts/       # App layouts
-  app.component.ts
-  app.routes.ts
-  ...
+A clear, modular structure for both frontend (Angular) and backend (Express):
+
+```text
+src/
+├── app/
+│   ├── components/      # Standalone, reusable UI components
+│   ├── core/            # Core services, guards, and utilities
+│   ├── layouts/         # Application layouts (admin, auth, main)
+│   ├── models/          # TypeScript interfaces and models
+│   ├── pages/           # Route-based pages (admin, home, auth, not-found)
+│   ├── services/        # Feature and domain services
+│   ├── app.component.ts
+│   ├── app.routes.ts
+│   └── ...
+├── api/
+│   ├── features/
+│   │   └── todos/
+│   │       ├── todos.controller.ts
+│   │       └── todos.routes.ts
+│   ├── lib/
+│   │   ├── prisma.ts
+│   │   └── auth.ts
+│   ├── middlewares/     # Express middlewares
+│   ├── utils/           # Utility functions
+│   └── api.ts           # Main API router
+├── generated/           # Prisma generated client
+├── main.ts              # Angular entry point
+├── main.server.ts       # Angular SSR entry point
+├── server.ts            # Express server entry point
+└── styles.css           # Global styles
 ```
 
-### Backend/API (Express)
-```
-src/api/
-  features/
-    todos/         # Example feature: Todo REST API (Prisma-powered)
-      todos.controller.ts
-      todos.routes.ts
-  lib/             # Shared backend utilities (Prisma client, auth, etc.)
-    prisma.ts
-    auth.ts        # better-auth integration
-  middlewares/     # Express middlewares (currently empty)
-  utils/           # Utility functions (currently empty)
-  api.ts           # Main API router
-```
+- **Separation of concerns:** Frontend and backend code are clearly separated for maintainability.
+- **Feature-first:** Both Angular and Express codebases are organized by feature for scalability.
+- **Ready for extension:** Add new features by creating new folders in `src/app/pages` or `src/api/features`.
 
 ---
 
 ## 🔗 Import Aliases
 
-ngXpress includes pre-configured TypeScript path mapping for clean, maintainable imports. Instead of relative paths, use these aliases:
+ngXpress uses TypeScript path aliases for clean, maintainable imports throughout your Angular app. This eliminates long relative paths and makes refactoring easier.
+
+### Why Use Import Aliases?
+- **Readability:** Cleaner, more descriptive import statements
+- **Maintainability:** Refactor and move files without breaking imports
+- **Scalability:** Add new features and modules with less hassle
+
+### Usage Example
 
 ```typescript
-// ❌ Relative imports (hard to maintain)
+// ❌ Without aliases (hard to maintain)
 import { TodoService } from '../../../services/todo.service';
 import { AuthGuard } from '../../core/guards/auth.guard';
 
-// ✅ Alias imports (clean and maintainable)
+// ✅ With aliases (recommended)
 import { TodoService } from '@services/todo.service';
 import { AuthGuard } from '@core/guards/auth.guard';
 ```
 
 ### Available Aliases
 
-| Alias | Path | Description |
-|-------|------|-------------|
-| `@components/*` | `src/app/components/*` | Reusable UI components |
-| `@core/*` | `src/app/core/*` | Core services, guards, and utilities |
-| `@layouts/*` | `src/app/layouts/*` | Application layouts |
-| `@models/*` | `src/app/models/*` | TypeScript interfaces and models |
-| `@pages/*` | `src/app/pages/*` | Route-based pages |
-| `@services/*` | `src/app/services/*` | Feature services |
+| Alias              | Path                          | Description                        |
+|--------------------|-------------------------------|------------------------------------|
+| `@components/*`    | `src/app/components/*`        | Reusable UI components             |
+| `@core/*`          | `src/app/core/*`              | Core services, guards, utilities   |
+| `@layouts/*`       | `src/app/layouts/*`           | Application layouts                |
+| `@models/*`        | `src/app/models/*`            | TypeScript interfaces and models   |
+| `@pages/*`         | `src/app/pages/*`             | Route-based pages                  |
+| `@services/*`      | `src/app/services/*`          | Feature/domain services            |
 
-This configuration is set up in `tsconfig.json` and works seamlessly with Angular's build system.
+Aliases are configured in `tsconfig.json` and work seamlessly with Angular CLI and most editors (VS Code recommended).
 
----
+### Adding New Aliases
+1. Open `tsconfig.json` in the project root.
+2. Add your new alias under the `compilerOptions.paths` section. For example:
+   ```json
+   "@utils/*": ["src/app/utils/*"]
+   ```
+3. Restart your IDE for the changes to take effect.
 
-## 🛠️ Development Workflow
-
-1. **Frontend Development**: Use `npm run dev` for hot reloading
-2. **Backend Development**: API changes are automatically reflected
-3. **Database Changes**: Use `npx prisma studio` to view/edit data
-4. **Testing**: Run `npm test` for unit tests
-5. **Building**: Use `npm run build` for production builds
-
----
-
-## 📦 Available Scripts
-
-```bash
-npm run dev     # Start Angular dev server
-npm run build   # Build Angular app
-npm run start   # Start the production server (Express + SSR)
-```
+For more details, see the [TypeScript documentation on path mapping](https://www.typescriptlang.org/tsconfig#paths).
 
 ---
 
-## 📝 Conventions & Best Practices
+## 📚 Documentation & Resources
 
-- **Feature-first structure:** Organize both frontend and backend code by feature for scalability and maintainability.
-- **Zoneless Angular:** No `zone.js` required for modern, high-performance Angular apps.
-- **TypeScript everywhere:** Use TypeScript for both frontend and backend for type safety.
-- **Authentication:** Integrated with `better-auth` for secure authentication flows.
-- **Prisma ORM:** Database access via Prisma, with models defined in `prisma/schema.prisma`.
-- **Styling:** Tailwind CSS for rapid, modern UI development.
-- **Testing:** Place unit tests alongside their respective services/components (e.g., `*.spec.ts`).
-- **Environment variables:** Use `.env` for backend configuration.
-- **Ready for deployment:** Production build and SSR support out of the box.
-
----
-
-## 📝 Example: Todo REST API
-
-All API endpoints are accessible at `http://localhost:4200/api` during development:
-
-- `GET /api/todos` — List all todos
-- `GET /api/todos/:id` — Get a single todo
-- `POST /api/todos` — Create a new todo
-- `PUT /api/todos/:id` — Update a todo
-- `DELETE /api/todos/:id` — Delete a todo
-
----
-
-## 🧩 Customization Guide
-
-- Add new features in `src/api/features/`
-- Define new Prisma models in `prisma/schema.prisma`
-- Add Angular pages/components in `src/app/pages` or `src/app/components`
-- Update styles in `tailwind.config.js` and `src/styles.css`
-- Configure authentication with **better-auth**
-
----
-
-## 🚀 Deployment
-
-ngXpress is ready for deployment on platforms like:
-- **Vercel**: Zero-config deployment with SSR support
-- **Railway**: Easy full-stack deployment
-- **Heroku**: Traditional hosting with buildpacks
-- **Docker**: Containerized deployment
-
-Use `npm run build` to create production assets and `npm run start` to run the production server.
-
----
-
-## 🔧 Troubleshooting
-
-**Database Issues:**
-- Run `npx prisma generate` after schema changes
-- Use `npx prisma db push` for quick schema updates
-
-**Port Conflicts:**
-- Change the port in `angular.json` if 4200 is busy
-- API will automatically use the same port
-
-**Import Issues:**
-- Ensure TypeScript path mapping is working
-- Restart your IDE after adding new aliases
-
----
-
-## 🎯 What's Next?
-
-1. **Explore the codebase**: Check out the example Todo API and components
-2. **Add your first feature**: Create a new API endpoint and Angular service
-3. **Customize the UI**: Modify Tailwind classes in components
-4. **Set up authentication**: Configure better-auth for your needs
-5. **Deploy**: Choose your preferred hosting platform
+- **Angular Documentation**: [Angular.io](https://angular.dev)
+- **Express.js Documentation**: [Expressjs.com](https://expressjs.com/en/5x/api.html)
+- **Prisma Documentation**: [Prisma.io](https://www.prisma.io/docs/)
+- **Tailwind CSS Documentation**: [Tailwindcss.com](https://tailwindcss.com/docs)
+- **Better Auth Documentation**: [BetterAuth.dev](https://www.better-auth.com/docs/introduction)
 
 ---
 
 ## 🤝 Contributing
 
-PRs and issues are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+We welcome contributions to ngXpress! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how to contribute.
 
 ---
 
-## 📄 License
+## 📝 License
 
-MIT
-
----
-
-**ngXpress** — The modern Angular + Express starter you always wanted.
+ngXpress is open-source software licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as per the license terms.
 
 ---
 
-*Keywords: angular, angular-starter, angular-template, angular-fullstack, angular-universal, angular-ssr, angular-express, angular-prisma, angular-tailwind, angular-auth, fullstack, fullstack-starter, ssr, express, expressjs, prisma, tailwindcss, authentication, better-auth, typescript, nodejs, monorepo, modern-web, scalable, production-ready, nextjs-alternative, nextjs-for-angular, zoneless, angular-zoneless*
+## 🏷️ Keywords
+
+angular, angular-starter, angular-template, angular-fullstack, angular-universal, angular-ssr, angular-express, angular-prisma, angular-tailwind, angular-auth, fullstack, fullstack-starter, ssr, express, expressjs, prisma, tailwindcss, authentication, better-auth, typescript, nodejs, monorepo, modern-web, scalable, production-ready, nextjs-alternative, nextjs-for-angular, zoneless, angular-zoneless
 
 ---
 
 ## 👤 Creator
 
-Made with ❤️ by [@immohammadjaved](https://x.com/immohammadjaved).  
-Follow me for updates, tips, and more Angular/Node content!
+Made with ❤️ by [@immohammadjaved](https://x.com/immohammadjaved)
 
----
+Follow for updates, tips, and more Angular/NodeJs content!
