@@ -43,10 +43,11 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start": "node dist/ngxpress/server/server.mjs"
+    "start": "node dist/ngxpress/server/server.mjs",
+    "postbuild": "prisma generate && cp prisma/dev.db dist/ngxpress/server/dev.db"
   },
   "prettier": {
     "overrides": [
