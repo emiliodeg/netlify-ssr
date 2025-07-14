@@ -182,11 +182,11 @@ For more details, see the [TypeScript documentation on path mapping](https://www
 
 ## 📚 Documentation & Resources
 
-- **Angular Documentation**: [Angular.io](https://angular.dev)
-- **Express.js Documentation**: [Expressjs.com](https://expressjs.com/en/5x/api.html)
-- **Prisma Documentation**: [Prisma.io](https://www.prisma.io/docs/)
-- **Tailwind CSS Documentation**: [Tailwindcss.com](https://tailwindcss.com/docs)
-- **Better Auth Documentation**: [BetterAuth.dev](https://www.better-auth.com/docs/introduction)
+- **Angular Documentation**: [angular.dev](https://angular.dev)
+- **Express.js Documentation**: [expressjs.com](https://expressjs.com/en/5x/api.html)
+- **Prisma Documentation**: [prisma.io](https://www.prisma.io/docs/)
+- **Tailwind CSS Documentation**: [tailwindcss.com](https://tailwindcss.com/docs)
+- **Better Auth Documentation**: [better-auth.com](https://www.better-auth.com/docs/introduction)
 
 ---
 
