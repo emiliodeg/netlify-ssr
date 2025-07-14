@@ -37,7 +37,7 @@ export class SigninComponent {
       },
       error: (err) => {
         this.loading.set(false);
-        this.error.set(err.message || 'An error occurred during sign-in');
+        this.error.set(err?.error?.message || 'An error occurred during sign-in');
       }
     });
   }

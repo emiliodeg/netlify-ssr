@@ -42,7 +42,7 @@ export class ResetPasswordComponent {
     this.loading.set(true);
     this.error.set(null);
     const password = this.form.get('password')?.value;
-    this.authService.resetPassword(this.token, password).subscribe({
+    this.authService.resetPassword(password, this.token).subscribe({
       next: () => {
         this.loading.set(false);
         this.success.set(true);

@@ -76,7 +76,8 @@ export class AuthService {
    * @returns
    */
   forgotPassword(email: string) {
-    return this.apiService.post('auth/forget-password', { email });
+    const redirectTo = `${window.location.origin}/auth/reset-password`;
+    return this.apiService.post('auth/forget-password', { email, redirectTo });
   }
 
   /**
@@ -85,7 +86,7 @@ export class AuthService {
    * @param password
    * @returns
    */
-  resetPassword(token: string, password: string) {
-    return this.apiService.post('auth/reset-password', { token, password });
+  resetPassword(newPassword: string, token: string) {
+    return this.apiService.post('auth/reset-password', { newPassword, token });
   }
 }
