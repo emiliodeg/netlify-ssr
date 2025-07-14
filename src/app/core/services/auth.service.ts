@@ -69,4 +69,23 @@ export class AuthService {
       this.router.navigate(['auth/signin']);
     });
   }
+
+  /**
+   * To trigger forgot password email using better-auth endpoint.
+   * @param email
+   * @returns
+   */
+  forgotPassword(email: string) {
+    return this.apiService.post('auth/forget-password', { email });
+  }
+
+  /**
+   * To reset password using better-auth endpoint.
+   * @param token
+   * @param password
+   * @returns
+   */
+  resetPassword(token: string, password: string) {
+    return this.apiService.post('auth/reset-password', { token, password });
+  }
 }
