@@ -4,14 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AuthService } from '@core/services/auth.service';
 
-interface Notification {
-  id: number;
-  title: string;
-  message: string;
-  time: Date;
-  read: boolean;
-}
-
 @Component({
   selector: 'app-admin-header',
   imports: [CommonModule, FormsModule, RouterLink],
