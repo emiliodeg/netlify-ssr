@@ -1,7 +1,7 @@
-import { Component, signal, EventEmitter, Output, inject } from '@angular/core';
+import { Component, signal, EventEmitter, Output, inject, ElementRef, Renderer2, PLATFORM_ID, Inject, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AuthService } from '@core/services/auth.service';
 
 interface Notification {
@@ -17,42 +17,49 @@ interface Notification {
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './admin-header.component.html'
 })
-export class AdminHeaderComponent {
+export class AdminHeaderComponent implements AfterViewInit, OnDestroy {
   private authService = inject(AuthService);
   @Output() mobileMenuToggle = new EventEmitter<void>();
 
   // Signals for reactive state
   searchQuery = signal('');
-  showNotifications = signal(false);
   showUserMenu = signal(false);
-  notificationCount = signal(3);
+  private documentClickListener: (() => void) | null = null;
 
-  // Mock notifications data
-  notifications = signal<Notification[]>([
-    {
-      id: 1,
-      title: 'New user registration',
-      message: 'John Doe has registered for an account',
-      time: new Date(Date.now() - 1000 * 60 * 30), // 30 minutes ago
-      read: false
-    },
-    {
-      id: 2,
-      title: 'System update completed',
-      message: 'The latest system update has been successfully installed',
-      time: new Date(Date.now() - 1000 * 60 * 60 * 2), // 2 hours ago
-      read: false
-    },
-    {
-      id: 3,
-      title: 'Backup reminder',
-      message: 'Daily backup is scheduled for tonight at 2:00 AM',
-      time: new Date(Date.now() - 1000 * 60 * 60 * 4), // 4 hours ago
-      read: false
+  constructor(
+    private router: Router,
+    private elRef: ElementRef,
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.documentClickListener = this.renderer.listen('document', 'click', (event: Event) => {
+        // The dropdown menu
+        const userMenuDropdown = this.elRef.nativeElement.querySelector('.user-menu-dropdown');
+        // The button that toggles the menu
+        const userMenuButton = this.elRef.nativeElement.querySelector('.user-menu-button');
+        // If menu is open, and click is outside both the button and the dropdown, close it
+        if (
+          this.showUserMenu() &&
+          userMenuDropdown &&
+          userMenuButton &&
+          !userMenuDropdown.contains(event.target) &&
+          !userMenuButton.contains(event.target)
+        ) {
+          this.showUserMenu.set(false);
+        }
+      });
     }
-  ]);
+  }
 
-  constructor(private router: Router) { }
+  ngOnDestroy() {
+    if (this.documentClickListener) {
+      this.documentClickListener();
+      this.documentClickListener = null;
+    }
+  }
 
   // Get current page name for breadcrumbs
   currentPage(): string {
@@ -81,7 +88,8 @@ export class AdminHeaderComponent {
 
   // Get user initials for avatar
   getUserInitials(): string {
-    const name = 'Admin User'; // Replace with actual user name
+    // const name = 'Admin User'; // Replace with actual user name
+    const name = this.authService.user()?.user?.name || 'User';
     return name.split(' ').map(n => n[0]).join('').toUpperCase();
   }
 
@@ -90,20 +98,10 @@ export class AdminHeaderComponent {
     this.mobileMenuToggle.emit();
   }
 
-  // Toggle notifications dropdown
-  toggleNotifications(): void {
-    this.showNotifications.update(show => !show);
-    if (this.showNotifications()) {
-      this.showUserMenu.set(false);
-    }
-  }
 
   // Toggle user menu dropdown
   toggleUserMenu(): void {
     this.showUserMenu.update(show => !show);
-    if (this.showUserMenu()) {
-      this.showNotifications.set(false);
-    }
   }
 
   // Sign out functionality
@@ -115,10 +113,11 @@ export class AdminHeaderComponent {
 
   // Mock user data (replace with actual user service)
   user(): any {
+    const user = this.authService.user()?.user;
     return {
       user: {
-        name: 'Admin User',
-        email: 'admin@example.com'
+        name: user?.name || 'Admin User',
+        email: user?.email || 'admin@example.com'
       }
     };
   }
