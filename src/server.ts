@@ -12,6 +12,7 @@ import { join } from 'node:path';
 import apiRoutes from './api/api';
 import { toNodeHandler } from "better-auth/node";
 import { auth } from './api/lib/auth';
+import morgan from 'morgan';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -29,6 +30,13 @@ app.use(
     },
   })
 );
+
+// Logger middleware (morgan)
+if (process.env['NODE_ENV'] === 'production') {
+  app.use(morgan('combined'));
+} else {
+  app.use(morgan('dev'));
+}
 
 // Register better-auth route BEFORE body parsers and helmet
 app.all('/api/auth/{*any}', toNodeHandler(auth));
