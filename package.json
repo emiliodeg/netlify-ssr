@@ -22,7 +22,7 @@
   },
   "private": true,
   "engines": {
-    "node": ">=20.19.0",
+    "node": ">=22",
     "npm": ">=9.0.0"
   },
   "dependencies": {
