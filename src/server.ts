@@ -20,7 +20,10 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 
-app.use(cors());
+app.use(cors({
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
