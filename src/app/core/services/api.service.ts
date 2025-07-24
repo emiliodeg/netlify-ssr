@@ -26,6 +26,7 @@ export class ApiService {
   post<T>(endpoint: string, body: any): Observable<T> {
     return this.http.post<T>(`${this.baseUrl}/${endpoint}`, body, {
       headers: this.getHeaders(),
+      withCredentials: true
     });
   }
 

@@ -20,8 +20,8 @@ export class SigninComponent {
 
   constructor() {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      email: ['demo@ngxpress.dev', [Validators.required, Validators.email]],
+      password: ['Password@123', [Validators.required, Validators.minLength(6)]]
     });
   }
 
