@@ -21,6 +21,7 @@ const angularApp = new AngularNodeAppEngine();
 
 
 app.use(cors({
+  origin: ["https://demo.ngxpress.dev", "http://localhost:4200", "http://localhost:4000"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
