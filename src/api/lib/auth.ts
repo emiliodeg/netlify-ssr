@@ -4,6 +4,7 @@ import { openAPI } from "better-auth/plugins"
 
 import { prisma } from "./prisma";
 export const auth = betterAuth({
+    trustedOrigins: ["https://demo.ngxpress.dev", "http://localhost:4200", "http://localhost:4000"],
     database: prismaAdapter(prisma, {
         provider: "sqlite",
     }),
